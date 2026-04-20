@@ -22,7 +22,7 @@ export default function RootLayout({
         <Nav />
         <main className="flex-1">{children}</main>
         <footer className="border-t border-[#1a6b7a]/20 py-8 px-6 text-center text-sm" style={{ color: "var(--teal)", background: "var(--navy)" }}>
-          <span className="opacity-60 text-[#f7f4ee]">© {new Date().getFullYear()} AJ Marksberry</span>
+          <span className="opacity-60 text-[#f7f4ee]">© {new Date().getFullYear()} AJ Marksberry — built with Next.js and a concerning amount of self-doubt</span>
         </footer>
       </body>
     </html>
