@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
+  --background: #f7f4ee;
+  --foreground: #0e1f2e;
+  --navy: #0e1f2e;
+  --teal: #1a6b7a;
+  --teal-light: #e8f4f6;
+  --sand: #c9a96e;
+  --sand-light: #fdf6e9;
 }
 
 body {
@@ -13,4 +18,12 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-serif), Georgia, serif;
+}
+
+/* Subtle water ripple rule used as a decorative divider */
+.water-rule {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--teal), var(--sand), var(--teal), transparent);
+  opacity: 0.3;
+  border: none;
 }

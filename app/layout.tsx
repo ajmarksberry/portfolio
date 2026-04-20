@@ -18,11 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-white text-slate-900">
+      <body className="min-h-full flex flex-col" style={{ background: "var(--background)", color: "var(--foreground)" }}>
         <Nav />
         <main className="flex-1">{children}</main>
-        <footer className="border-t border-slate-100 py-8 px-6 text-center text-sm text-slate-400">
-          © {new Date().getFullYear()} AJ Marksberry
+        <footer className="border-t border-[#1a6b7a]/20 py-8 px-6 text-center text-sm" style={{ color: "var(--teal)", background: "var(--navy)" }}>
+          <span className="opacity-60 text-[#f7f4ee]">© {new Date().getFullYear()} AJ Marksberry</span>
         </footer>
       </body>
     </html>

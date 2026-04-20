@@ -17,7 +17,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ["B2B", "TAAP", "Itinerary Management"],
     year: "2026",
     status: "published",
-    coverColor: "bg-emerald-50",
+    coverColor: "#e8f4f6",
   },
   {
     slug: "coming-soon-2",
@@ -26,7 +26,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ["B2B", "TAAP"],
     year: "2025",
     status: "coming-soon",
-    coverColor: "bg-indigo-50",
+    coverColor: "#eef3f0",
   },
   {
     slug: "coming-soon-3",
@@ -35,6 +35,6 @@ export const caseStudies: CaseStudy[] = [
     tags: ["B2B", "TAAP"],
     year: "2024",
     status: "coming-soon",
-    coverColor: "bg-amber-50",
+    coverColor: "#fdf6e9",
   },
 ];
