@@ -27,7 +27,7 @@ export default function Nav() {
           {[
             { label: "Work", href: "/" },
             { label: "About", href: "/#about" },
-            { label: "Contact", href: "mailto:ajmarksberry@gmail.com" },
+            { label: "Contact", href: "/contact" },
           ].map(({ label, href }) => (
             <a
               key={label}

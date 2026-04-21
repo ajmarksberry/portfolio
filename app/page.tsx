@@ -245,18 +245,18 @@ export default function Home() {
               hard, ask good questions, and I promise my Figma files are
               organized. (One of those might be a lie.)
             </p>
-            <a
-              href="mailto:ajmarksberry@gmail.com"
+            <Link
+              href="/contact"
               className="inline-flex items-center gap-3 font-semibold transition-opacity hover:opacity-70"
               style={{
                 color: "var(--sand)",
                 fontSize: "18px",
-                lineHeight: "28px", /* 7 × 4px */
+                lineHeight: "28px",
               }}
             >
-              ajmarksberry@gmail.com
-              <span>↗</span>
-            </a>
+              Get in touch
+              <span>→</span>
+            </Link>
           </div>
         </div>
       </section>
