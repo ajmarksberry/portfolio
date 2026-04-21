@@ -1,7 +1,10 @@
-import Link from "next/link";
+"use client";
+
 import { caseStudies } from "@/lib/case-studies";
+import { useStudy } from "@/lib/study-context";
 
 export default function Home() {
+  const { openStudy } = useStudy();
   const live = caseStudies.filter((s) => s.status === "published");
   const soon = caseStudies.filter((s) => s.status === "coming-soon");
 
@@ -28,7 +31,7 @@ export default function Home() {
         </p>
 
         {live.map((study, i) => (
-          <Link key={study.slug} href={`/work/${study.slug}`} style={{ textDecoration: "none", display: "block" }}>
+          <button key={study.slug} onClick={() => openStudy(study.slug)} style={{ display: "block", width: "100%", background: "none", border: "none", cursor: "pointer", textAlign: "left", padding: 0 }}>
             <div className="work-row" style={{ alignItems: "start", borderTop: "1px solid var(--rule)", padding: "40px 0" }}>
               <span style={{ fontFamily: "var(--font-serif)", fontSize: 12, color: "var(--muted)", paddingTop: 4, lineHeight: "20px" }}>
                 {String(i + 1).padStart(2, "0")}
@@ -52,7 +55,7 @@ export default function Home() {
                 {study.year}
               </span>
             </div>
-          </Link>
+          </button>
         ))}
 
         {soon.map((study, i) => (
