@@ -1,39 +1,97 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
-const links = [
-  { label: "Work", href: "/" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/contact" },
+const sections = [
+  { id: "work",    label: "Work" },
+  { id: "about",   label: "About" },
+  { id: "contact", label: "Contact" },
 ];
 
 export default function Nav() {
-  const pathname = usePathname();
+  const [active, setActive] = useState("work");
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    sections.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActive(id); },
+        { threshold: 0.3 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <header style={{ borderBottom: "1px solid var(--rule)", position: "sticky", top: 0, zIndex: 50, background: "rgba(255,255,255,0.95)", backdropFilter: "blur(8px)" }}>
-      <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 24px", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <Link href="/" style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: 18, color: "var(--ink)", textDecoration: "none" }}>
-          AJ Marksberry
-        </Link>
-        <nav style={{ display: "flex", gap: 32 }}>
-          {links.map(({ label, href }) => (
-            <Link
-              key={label}
-              href={href}
-              style={{
-                fontSize: 14,
-                textDecoration: "none",
-                color: pathname === href ? "var(--ink)" : "var(--muted)",
-                fontWeight: pathname === href ? 500 : 400,
-              }}
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
-      </div>
-    </header>
+    <nav style={{
+      position: "fixed",
+      right: 32,
+      top: "50%",
+      transform: "translateY(-50%)",
+      zIndex: 50,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "flex-end",
+      gap: 4,
+    }}>
+      {/* Vertical line */}
+      <div style={{
+        position: "absolute",
+        right: 3,
+        top: 8,
+        bottom: 8,
+        width: 1,
+        background: "var(--rule)",
+      }} />
+
+      {sections.map(({ id, label }) => (
+        <button
+          key={id}
+          onClick={() => scrollTo(id)}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            padding: "8px 0",
+            paddingRight: 16,
+          }}
+        >
+          <span style={{
+            fontSize: 11,
+            fontWeight: 600,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            color: active === id ? "var(--ink)" : "var(--muted)",
+            opacity: active === id ? 1 : 0.5,
+            transition: "opacity 0.2s, color 0.2s",
+          }}>
+            {label}
+          </span>
+          {/* Dot */}
+          <div style={{
+            width: 6,
+            height: 6,
+            borderRadius: "50%",
+            background: active === id ? "var(--accent)" : "var(--rule)",
+            border: `1px solid ${active === id ? "var(--accent)" : "var(--muted)"}`,
+            transition: "background 0.2s, border-color 0.2s",
+            flexShrink: 0,
+          }} />
+        </button>
+      ))}
+    </nav>
   );
 }

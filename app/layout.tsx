@@ -13,13 +13,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`} style={{ scrollBehavior: "smooth" }}>
       <body>
         <Nav />
         <main>{children}</main>
-        <footer style={{ borderTop: "1px solid var(--rule)", padding: "32px 24px", textAlign: "center", fontSize: "13px", color: "var(--muted)" }}>
-          © {new Date().getFullYear()} AJ Marksberry
-        </footer>
       </body>
     </html>
   );
