@@ -5,27 +5,42 @@ import { usePathname } from "next/navigation";
 
 export default function Nav() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur border-b border-[#1a6b7a]/20" style={{ background: "rgba(14,31,46,0.97)" }}>
+    <header
+      className="sticky top-0 z-50 border-b backdrop-blur"
+      style={{
+        background: "rgba(14,31,46,0.96)",
+        borderColor: "rgba(26,107,122,0.2)",
+      }}
+    >
       <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="text-sm font-semibold tracking-wide transition-colors" style={{ color: "#f7f4ee", fontFamily: "var(--font-serif)" }}>
+        <Link
+          href="/"
+          className="font-bold tracking-tight transition-opacity hover:opacity-70"
+          style={{ color: "#f7f4ee", fontFamily: "var(--font-serif)", fontSize: "1.1rem" }}
+        >
           AJ Marksberry
         </Link>
-        <nav className="flex items-center gap-6 text-sm" style={{ color: "#a8c5cc" }}>
-          <Link
-            href="/"
-            className="transition-colors hover:text-[#f7f4ee]"
-            style={{ color: pathname === "/" ? "#f7f4ee" : undefined, fontWeight: pathname === "/" ? 500 : undefined }}
-          >
-            Work
-          </Link>
-          <Link href="/#about" className="transition-colors hover:text-[#f7f4ee]">
-            About
-          </Link>
-          <a href="mailto:ajmarksberry@gmail.com" className="transition-colors hover:text-[#f7f4ee]">
-            Contact
-          </a>
+        <nav className="flex items-center gap-8 text-sm">
+          {[
+            { label: "Work", href: "/" },
+            { label: "About", href: "/#about" },
+            { label: "Contact", href: "mailto:ajmarksberry@gmail.com" },
+          ].map(({ label, href }) => (
+            <a
+              key={label}
+              href={href}
+              className="transition-colors hover:opacity-100"
+              style={{
+                color: pathname === href ? "#f7f4ee" : "#6a9aaa",
+                fontWeight: pathname === href ? 500 : 400,
+              }}
+            >
+              {label}
+            </a>
+          ))}
         </nav>
       </div>
     </header>
