@@ -10,8 +10,12 @@ const sections = [
 
 export default function Nav() {
   const [active, setActive] = useState("work");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
+    if (!mounted) return;
     const observers: IntersectionObserver[] = [];
 
     sections.forEach(({ id }) => {
@@ -26,7 +30,9 @@ export default function Nav() {
     });
 
     return () => observers.forEach((o) => o.disconnect());
-  }, []);
+  }, [mounted]);
+
+  if (!mounted) return null;
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
