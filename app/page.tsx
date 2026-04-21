@@ -7,15 +7,15 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero — not a nav target, flows into #work */}
-      <section style={{ maxWidth: 800, margin: "0 auto", padding: "128px 24px 96px" }}>
+      {/* Hero */}
+      <section style={{ maxWidth: 800, margin: "0 auto", padding: "clamp(64px, 12vw, 128px) 24px clamp(64px, 10vw, 96px)" }}>
         <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 24, lineHeight: "20px" }}>
           AJ Marksberry — Senior UX Designer
         </p>
-        <h1 style={{ fontFamily: "var(--font-serif)", fontSize: 64, lineHeight: "72px", fontWeight: 700, color: "var(--ink)", maxWidth: 640, marginBottom: 28 }}>
+        <h1 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(40px, 7vw, 64px)", lineHeight: "1.1", fontWeight: 700, color: "var(--ink)", maxWidth: 640, marginBottom: 28 }}>
           Designing products people actually use.
         </h1>
-        <p style={{ fontSize: 18, lineHeight: "32px", color: "var(--muted)", maxWidth: 480 }}>
+        <p style={{ fontSize: "clamp(16px, 2.5vw, 18px)", lineHeight: "32px", color: "var(--muted)", maxWidth: 480 }}>
           10+ years designing B2B tools at Expedia. Complex systems,
           real humans, tight deadlines.
         </p>
@@ -29,7 +29,7 @@ export default function Home() {
 
         {live.map((study, i) => (
           <Link key={study.slug} href={`/work/${study.slug}`} style={{ textDecoration: "none", display: "block" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "40px 1fr auto", gap: 28, alignItems: "start", borderTop: "1px solid var(--rule)", padding: "40px 0" }}>
+            <div className="work-row" style={{ alignItems: "start", borderTop: "1px solid var(--rule)", padding: "40px 0" }}>
               <span style={{ fontFamily: "var(--font-serif)", fontSize: 12, color: "var(--muted)", paddingTop: 4, lineHeight: "20px" }}>
                 {String(i + 1).padStart(2, "0")}
               </span>
@@ -41,14 +41,14 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
-                <h3 style={{ fontFamily: "var(--font-serif)", fontSize: 26, lineHeight: "36px", fontWeight: 700, color: "var(--ink)", marginBottom: 8 }}>
+                <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(20px, 3vw, 26px)", lineHeight: "36px", fontWeight: 700, color: "var(--ink)", marginBottom: 8 }}>
                   {study.title}
                 </h3>
                 <p style={{ fontSize: 15, lineHeight: "24px", color: "var(--muted)", maxWidth: 480 }}>
                   {study.subtitle}
                 </p>
               </div>
-              <span style={{ fontSize: 12, color: "var(--muted)", paddingTop: 4, whiteSpace: "nowrap", lineHeight: "20px" }}>
+              <span className="work-row-year" style={{ fontSize: 12, color: "var(--muted)", paddingTop: 4, whiteSpace: "nowrap", lineHeight: "20px" }}>
                 {study.year}
               </span>
             </div>
@@ -56,17 +56,17 @@ export default function Home() {
         ))}
 
         {soon.map((study, i) => (
-          <div key={study.slug} style={{ display: "grid", gridTemplateColumns: "40px 1fr auto", gap: 28, alignItems: "start", borderTop: "1px solid var(--rule)", padding: "40px 0", opacity: 0.3 }}>
+          <div key={study.slug} className="work-row" style={{ alignItems: "start", borderTop: "1px solid var(--rule)", padding: "40px 0", opacity: 0.3 }}>
             <span style={{ fontFamily: "var(--font-serif)", fontSize: 12, color: "var(--muted)", paddingTop: 4 }}>
               {String(live.length + i + 1).padStart(2, "0")}
             </span>
             <div>
               <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 12 }}>Coming Soon</p>
-              <h3 style={{ fontFamily: "var(--font-serif)", fontSize: 26, lineHeight: "36px", fontWeight: 700, color: "var(--ink)" }}>
+              <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(20px, 3vw, 26px)", lineHeight: "36px", fontWeight: 700, color: "var(--ink)" }}>
                 {study.title}
               </h3>
             </div>
-            <span style={{ fontSize: 12, color: "var(--muted)", paddingTop: 4 }}>{study.year}</span>
+            <span className="work-row-year" style={{ fontSize: 12, color: "var(--muted)", paddingTop: 4 }}>{study.year}</span>
           </div>
         ))}
 
@@ -75,7 +75,7 @@ export default function Home() {
 
       {/* About */}
       <section id="about" style={{ background: "var(--paper)", borderTop: "1px solid var(--rule)" }}>
-        <div style={{ maxWidth: 800, margin: "0 auto", padding: "80px 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64 }}>
+        <div className="about-grid" style={{ maxWidth: 800, margin: "0 auto", padding: "80px 24px" }}>
           <div>
             <h2 style={{ fontFamily: "var(--font-serif)", fontSize: 36, lineHeight: "44px", fontWeight: 700, color: "var(--ink)", marginBottom: 24 }}>
               About
@@ -102,8 +102,8 @@ export default function Home() {
 
       {/* Contact */}
       <section id="contact" style={{ borderTop: "1px solid var(--rule)" }}>
-        <div style={{ maxWidth: 800, margin: "0 auto", padding: "80px 24px 128px" }}>
-          <h2 style={{ fontFamily: "var(--font-serif)", fontSize: 52, lineHeight: "60px", fontWeight: 700, color: "var(--ink)", maxWidth: 480, marginBottom: 32 }}>
+        <div style={{ maxWidth: 800, margin: "0 auto", padding: "80px 24px 112px" }}>
+          <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(36px, 6vw, 52px)", lineHeight: "1.1", fontWeight: 700, color: "var(--ink)", maxWidth: 480, marginBottom: 32 }}>
             Let&apos;s work together.
           </h2>
           <p style={{ fontSize: 16, lineHeight: "28px", color: "var(--muted)", maxWidth: 400, marginBottom: 48 }}>
@@ -116,7 +116,7 @@ export default function Home() {
           >
             ajmarksberry@gmail.com ↗
           </a>
-          <div style={{ marginTop: 28 }}>
+          <div style={{ marginTop: 24 }}>
             <a
               href="https://www.linkedin.com/in/ajmarksberry"
               target="_blank"
