@@ -3,43 +3,34 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+const links = [
+  { label: "Work", href: "/" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/contact" },
+];
+
 export default function Nav() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
-
   return (
-    <header
-      className="sticky top-0 z-50 border-b backdrop-blur"
-      style={{
-        background: "rgba(14,31,46,0.96)",
-        borderColor: "rgba(26,107,122,0.2)",
-      }}
-    >
-      <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link
-          href="/"
-          className="font-bold tracking-tight transition-opacity hover:opacity-70"
-          style={{ color: "#f7f4ee", fontFamily: "var(--font-serif)", fontSize: "1.1rem" }}
-        >
+    <header style={{ borderBottom: "1px solid var(--rule)", position: "sticky", top: 0, zIndex: 50, background: "rgba(255,255,255,0.95)", backdropFilter: "blur(8px)" }}>
+      <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 24px", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <Link href="/" style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: 18, color: "var(--ink)", textDecoration: "none" }}>
           AJ Marksberry
         </Link>
-        <nav className="flex items-center gap-8 text-sm">
-          {[
-            { label: "Work", href: "/" },
-            { label: "About", href: "/#about" },
-            { label: "Contact", href: "/contact" },
-          ].map(({ label, href }) => (
-            <a
+        <nav style={{ display: "flex", gap: 32 }}>
+          {links.map(({ label, href }) => (
+            <Link
               key={label}
               href={href}
-              className="transition-colors hover:opacity-100"
               style={{
-                color: pathname === href ? "#f7f4ee" : "#6a9aaa",
+                fontSize: 14,
+                textDecoration: "none",
+                color: pathname === href ? "var(--ink)" : "var(--muted)",
                 fontWeight: pathname === href ? 500 : 400,
               }}
             >
               {label}
-            </a>
+            </Link>
           ))}
         </nav>
       </div>

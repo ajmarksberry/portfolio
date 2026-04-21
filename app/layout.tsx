@@ -8,21 +8,17 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif"
 
 export const metadata: Metadata = {
   title: "AJ Marksberry — UX Designer",
-  description: "B2B product design portfolio. Senior UX Designer at Expedia TAAP.",
+  description: "Senior UX Designer. B2B product design portfolio.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col" style={{ background: "var(--background)", color: "var(--foreground)" }}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <body>
         <Nav />
-        <main className="flex-1">{children}</main>
-        <footer className="border-t border-[#1a6b7a]/20 py-8 px-6 text-center text-sm" style={{ color: "var(--teal)", background: "var(--navy)" }}>
-          <span className="opacity-60 text-[#f7f4ee]">© {new Date().getFullYear()} AJ Marksberry — built with Next.js and a concerning amount of self-doubt</span>
+        <main>{children}</main>
+        <footer style={{ borderTop: "1px solid var(--rule)", padding: "32px 24px", textAlign: "center", fontSize: "13px", color: "var(--muted)" }}>
+          © {new Date().getFullYear()} AJ Marksberry
         </footer>
       </body>
     </html>
