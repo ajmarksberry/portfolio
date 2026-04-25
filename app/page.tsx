@@ -8,6 +8,7 @@ export default function Home() {
   const live = caseStudies.filter((s) => s.status === "published");
   const protected_ = caseStudies.filter((s) => s.status === "protected");
   const soon = caseStudies.filter((s) => s.status === "coming-soon");
+  const clickable = [...live, ...protected_];
 
   return (
     <>
@@ -19,72 +20,58 @@ export default function Home() {
         <h1 style={{ fontFamily: "Georgia, serif", fontSize: "clamp(36px, 6vw, 64px)", lineHeight: "1.1", fontWeight: 700, color: "var(--ink)", marginBottom: 24 }}>
           25+ years designing complex B2B products.
         </h1>
-        <p style={{ fontSize: "clamp(15px, 2vw, 18px)", lineHeight: "1.7", color: "var(--muted)", maxWidth: 520, marginBottom: 0 }}>
+        <p style={{ fontSize: "clamp(15px, 2vw, 18px)", lineHeight: "1.7", color: "var(--muted)", maxWidth: 520 }}>
           Senior UX Designer currently embedded on the Expedia TAAP platform —
           tools used by thousands of travel agents worldwide.
           Complex systems, real humans, tight deadlines.
         </p>
       </section>
 
-      {/* Work */}
-      <section id="work" style={{ maxWidth: 720, margin: "0 auto", padding: "0 24px 80px" }}>
-        <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--faint)", marginBottom: 40 }}>
-          Selected Work
-        </p>
+      {/* Work — giant text nav */}
+      <section id="work" style={{ borderTop: "1px solid var(--rule)" }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto", padding: "0 24px" }}>
+          <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--faint)", padding: "32px 0 0" }}>
+            Selected Work
+          </p>
+        </div>
 
-        {[...live, ...protected_].map((study, i) => (
+        {clickable.map((study, i) => (
           <button
             key={study.slug}
             onClick={() => openStudy(study.slug)}
-            style={{ display: "block", width: "100%", background: "none", border: "none", cursor: "pointer", textAlign: "left", padding: 0 }}
+            className="giant-work-item"
             aria-label={`Open case study: ${study.title}`}
           >
-            <div className="work-row">
-              <span style={{ fontSize: 11, fontStyle: "italic", color: "var(--rule)", paddingTop: 4, lineHeight: "20px" }}>
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 10 }}>
+            <div style={{ maxWidth: 1000, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 24 }}>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <span className="giant-work-index">{String(i + 1).padStart(2, "0")}</span>
+                <span className="giant-work-title">{study.title}</span>
+                <div className="giant-work-meta">
                   {study.tags.map((tag) => (
-                    <span key={tag} style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--faint)" }}>
-                      {tag}
-                    </span>
+                    <span key={tag}>{tag}</span>
                   ))}
                 </div>
-                <h3 style={{ fontFamily: "Georgia, serif", fontSize: "clamp(18px, 3vw, 22px)", lineHeight: "1.3", fontWeight: 700, color: "var(--ink)", marginBottom: 8 }}>
-                  {study.title}
-                </h3>
-                <p style={{ fontSize: 14, lineHeight: "1.6", color: "var(--muted)", maxWidth: 480 }}>
-                  {study.subtitle}
-                </p>
               </div>
-              <span className="work-row-year" style={{ fontSize: 11, color: "var(--rule)", paddingTop: 4, whiteSpace: "nowrap", lineHeight: "20px" }}>
-                {study.year}
-              </span>
+              <span className="giant-work-year">{study.year} ↗</span>
             </div>
           </button>
         ))}
 
-        {soon.map((study, i) => (
-          <div key={study.slug} className="work-row" style={{ opacity: 0.35, cursor: "default" }}>
-            <span style={{ fontSize: 11, fontStyle: "italic", color: "var(--rule)", paddingTop: 4 }}>
-              {String(live.length + protected_.length + i + 1).padStart(2, "0")}
-            </span>
-            <div>
-              <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--faint)", marginBottom: 10 }}>Coming Soon</p>
-              <h3 style={{ fontFamily: "Georgia, serif", fontSize: "clamp(18px, 3vw, 22px)", lineHeight: "1.3", fontWeight: 700, color: "var(--ink)" }}>
-                {study.title}
-              </h3>
+        {soon.map((study) => (
+          <div key={study.slug} className="giant-work-item giant-work-soon">
+            <div style={{ maxWidth: 1000, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 24 }}>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <span className="giant-work-title">{study.title}</span>
+                <div className="giant-work-meta"><span>Coming Soon</span></div>
+              </div>
+              <span className="giant-work-year">{study.year}</span>
             </div>
-            <span className="work-row-year" style={{ fontSize: 11, color: "var(--rule)", paddingTop: 4 }}>{study.year}</span>
           </div>
         ))}
-
-        <div style={{ borderTop: "1px solid var(--rule)" }} />
       </section>
 
       {/* About */}
-      <section id="about" style={{ borderTop: "2px solid var(--rule)" }}>
+      <section id="about" style={{ borderTop: "2px solid var(--rule)", marginTop: 0 }}>
         <div className="about-grid" style={{ maxWidth: 720, margin: "0 auto", padding: "64px 24px" }}>
           <div>
             <h2 style={{ fontFamily: "Georgia, serif", fontSize: 28, lineHeight: "1.2", fontWeight: 700, color: "var(--ink)", marginBottom: 20 }}>

@@ -16,26 +16,30 @@ export default function SlideShell({ children }: { children: React.ReactNode }) 
   const StudyContent = activeStudy ? studyMap[activeStudy] : null;
 
   return (
-    <div style={{ overflow: "hidden", position: "relative" }}>
-      {/* Main panel */}
+    <div style={{ overflow: "hidden", position: "relative", minHeight: "100vh" }}>
+      {/* Main panel — shrinks back with parallax as study rises */}
       <div style={{
-        transform: activeStudy ? "translateX(-100%)" : "translateX(0)",
-        transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+        transform: activeStudy
+          ? "translateY(-48px) scale(0.96)"
+          : "translateY(0) scale(1)",
+        transformOrigin: "top center",
+        transition: "transform 0.65s cubic-bezier(0.4, 0, 0.2, 1)",
         willChange: "transform",
       }}>
         {children}
       </div>
 
-      {/* Study panel */}
+      {/* Study panel — slides up from bottom */}
       <div style={{
-        position: "absolute",
+        position: "fixed",
         inset: 0,
-        minHeight: "100vh",
-        background: "var(--white)",
-        transform: activeStudy ? "translateX(0)" : "translateX(100%)",
-        transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+        top: 0,
+        background: "#ffffff",
+        transform: activeStudy ? "translateY(0)" : "translateY(100%)",
+        transition: "transform 0.65s cubic-bezier(0.4, 0, 0.2, 1)",
         willChange: "transform",
         overflowY: activeStudy ? "auto" : "hidden",
+        zIndex: 50,
       }}>
         {StudyContent && <StudyContent />}
       </div>
