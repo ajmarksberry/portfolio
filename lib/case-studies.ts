@@ -4,7 +4,7 @@ export type CaseStudy = {
   subtitle: string;
   tags: string[];
   year: string;
-  status: "published" | "coming-soon";
+  status: "published" | "coming-soon" | "protected";
   coverColor: string;
 };
 
@@ -28,6 +28,15 @@ export const caseStudies: CaseStudy[] = [
     year: "2026",
     status: "published",
     coverColor: "#e8f4f6",
+  },
+  {
+    slug: "protected-study",
+    title: "Confidential Case Study",
+    subtitle: "Available upon request. Password required to view.",
+    tags: ["B2B", "TAAP", "Confidential"],
+    year: "2025",
+    status: "protected",
+    coverColor: "#f5f5f5",
   },
   {
     slug: "coming-soon-3",

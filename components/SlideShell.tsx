@@ -3,10 +3,12 @@
 import { useStudy } from "@/lib/study-context";
 import PostBookingContent from "./case-studies/PostBookingContent";
 import ItineraryBuilderContent from "./case-studies/ItineraryBuilderContent";
+import ProtectedContent from "./case-studies/ProtectedContent";
 
 const studyMap: Record<string, React.ComponentType> = {
   "post-booking-ux":    PostBookingContent,
   "itinerary-builder":  ItineraryBuilderContent,
+  "protected-study":    ProtectedContent,
 };
 
 export default function SlideShell({ children }: { children: React.ReactNode }) {
