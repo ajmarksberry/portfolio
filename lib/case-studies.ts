@@ -1,50 +1,53 @@
+export type Tag = { label: string; highlight?: boolean };
+
 export type CaseStudy = {
   slug: string;
+  number: string;
+  company: string;
   title: string;
-  subtitle: string;
-  tags: string[];
-  year: string;
-  status: "published" | "coming-soon" | "protected";
-  coverColor: string;
+  description: string;
+  tags: Tag[];
 };
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "post-booking-ux",
-    title: "Enhancements to the post-booking experience",
-    subtitle:
-      "Redesigning how travel agents manage client itineraries — from trip list to cancellation — on Expedia TAAP.",
-    tags: ["B2B", "TAAP", "Itinerary Management"],
-    year: "2026",
-    status: "published",
-    coverColor: "#e8f4f6",
-  },
-  {
     slug: "itinerary-builder",
-    title: "Itinerary Builder",
-    subtitle:
-      "Running a 2-day design workshop to align a cross-functional team on a new direction for how travel agents build and share itineraries.",
-    tags: ["B2B", "TAAP", "Workshop"],
-    year: "2026",
-    status: "published",
-    coverColor: "#e8f4f6",
+    number: "01",
+    company: "Expedia TAAP",
+    title: "TAAP Itinerary Builder",
+    description:
+      "Giving travel agents the power to curate and share personalised itineraries with their clients. Led a 2-day design sprint, built a working prototype with Figma Make, and conducted moderated research with 6 travel agents — from first wireframe to dev handoff.",
+    tags: [
+      { label: "B2B", highlight: true },
+      { label: "Design Sprint" },
+      { label: "Usability Research" },
+      { label: "2026" },
+    ],
   },
   {
-    slug: "protected-study",
-    title: "Confidential Case Study",
-    subtitle: "Available upon request. Password required to view.",
-    tags: ["B2B", "TAAP", "Confidential"],
-    year: "2025",
-    status: "protected",
-    coverColor: "#f5f5f5",
+    slug: "post-booking-ux",
+    number: "02",
+    company: "Expedia TAAP",
+    title: "TAAP Trips — Post-Booking Experience",
+    description:
+      "Three design generations — each shipped to production and replaced by the next. Transformed a consumer-borrowed flat list into a professional agent tool through research, friction mapping, and sustained design ownership over three years.",
+    tags: [
+      { label: "3 Generations", highlight: true },
+      { label: "Friction Mapping" },
+      { label: "2023–2026" },
+    ],
   },
   {
-    slug: "coming-soon-3",
-    title: "Case Study 3",
-    subtitle: "Coming soon.",
-    tags: ["B2B", "TAAP"],
-    year: "2024",
-    status: "coming-soon",
-    coverColor: "#fdf6e9",
+    slug: "reach",
+    number: "03",
+    company: "Reach (Contract)",
+    title: "Reach — AI Booking Platform",
+    description:
+      "Design Lead on the full Reach platform — end to end, from the first wireframe to a live product used by real businesses. A personalised AI booking experience for clients and a revenue analytics dashboard for business owners.",
+    tags: [
+      { label: "B2C + B2B", highlight: true },
+      { label: "Design System" },
+      { label: "2019–2021" },
+    ],
   },
 ];
