@@ -3,99 +3,54 @@ export const metadata = {
   description: "Get in touch with AJ Marksberry.",
 };
 
-import Link from "next/link";
-
 export default function ContactPage() {
   return (
-    <section className="max-w-2xl mx-auto px-6 pt-28 pb-32">
-      <Link
-        href="/"
-        className="inline-flex items-center gap-1.5 text-sm mb-12 transition-opacity hover:opacity-70"
-        style={{ color: "var(--teal)" }}
-      >
-        ← Back
-      </Link>
-
-      <p
-        className="text-xs font-semibold uppercase tracking-[0.25em] mb-8"
-        style={{ color: "var(--sand)", lineHeight: "20px" }}
-      >
-        Contact
-      </p>
-
-      <h1
-        className="font-bold mb-8"
-        style={{ color: "var(--navy)", fontSize: "64px", lineHeight: "72px" }}
-      >
-        Let&apos;s talk.
-      </h1>
-
-      <p
-        className="mb-16 max-w-md"
-        style={{ color: "#4a6a7a", fontSize: "18px", lineHeight: "28px" }}
-      >
-        I&apos;m actively looking for full-time UX and product design roles.
-        If you&apos;ve got something interesting, I&apos;d love to hear about it.
-        If you just want to talk about fishing, that&apos;s fine too.
-      </p>
-
-      {/* Email */}
-      <div
-        className="border-t pt-10 mb-10"
-        style={{ borderColor: "#1a6b7a33" }}
-      >
-        <p
-          className="text-xs font-semibold uppercase tracking-widest mb-4"
-          style={{ color: "var(--sand)", lineHeight: "20px" }}
-        >
-          Email
+    <>
+      <section className="page-hero" aria-labelledby="page-heading">
+        <p className="hero-eyebrow">
+          <span className="eyebrow-line" aria-hidden="true"></span>
+          <span className="eyebrow-text">Contact</span>
         </p>
-        <a
-          href="mailto:ajmarksberry@gmail.com"
-          className="font-semibold transition-opacity hover:opacity-70"
-          style={{ color: "var(--navy)", fontSize: "24px", lineHeight: "32px" }}
-        >
-          ajmarksberry@gmail.com ↗
-        </a>
-      </div>
+        <h1 className="page-h1" id="page-heading">Let&apos;s talk.</h1>
+        <p className="page-sub">
+          I&apos;m actively looking for full-time UX and product design roles. If you&apos;ve got something
+          interesting, I&apos;d love to hear about it.
+        </p>
+      </section>
 
-      {/* LinkedIn */}
-      <div
-        className="border-t pt-10 mb-10"
-        style={{ borderColor: "#1a6b7a33" }}
-      >
-        <p
-          className="text-xs font-semibold uppercase tracking-widest mb-4"
-          style={{ color: "var(--sand)", lineHeight: "20px" }}
-        >
-          LinkedIn
-        </p>
-        <a
-          href="https://www.linkedin.com/in/ajmarksberry"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-semibold transition-opacity hover:opacity-70"
-          style={{ color: "var(--navy)", fontSize: "24px", lineHeight: "32px" }}
-        >
-          linkedin.com/in/ajmarksberry ↗
-        </a>
-      </div>
+      <div className="full-rule" role="separator" aria-hidden="true"></div>
 
-      {/* Resume */}
-      <div
-        className="border-t pt-10"
-        style={{ borderColor: "#1a6b7a33" }}
-      >
-        <p
-          className="text-xs font-semibold uppercase tracking-widest mb-4"
-          style={{ color: "var(--sand)", lineHeight: "20px" }}
-        >
-          Resume
+      <section className="r-section" aria-labelledby="email-heading">
+        <h2 className="r-label" id="email-heading">Email</h2>
+        <p className="summary-text">
+          <a href="mailto:ajmarksberry@gmail.com" style={{ color: "var(--ink)", fontWeight: 600 }}>
+            ajmarksberry@gmail.com ↗
+          </a>
         </p>
-        <p style={{ color: "#4a6a7a", lineHeight: "28px" }}>
-          Available on request — just send an email.
+      </section>
+
+      <section className="r-section" aria-labelledby="linkedin-heading">
+        <h2 className="r-label" id="linkedin-heading">LinkedIn</h2>
+        <p className="summary-text">
+          <a
+            href="https://www.linkedin.com/in/ajmarksberry"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "var(--ink)", fontWeight: 600 }}
+          >
+            linkedin.com/in/ajmarksberry ↗
+          </a>
         </p>
-      </div>
-    </section>
+      </section>
+
+      <section className="r-section" aria-labelledby="resume-heading">
+        <h2 className="r-label" id="resume-heading">Resume</h2>
+        <p className="summary-text">
+          <a href="/resume" style={{ color: "var(--ink)", fontWeight: 600 }}>
+            View resume ↗
+          </a>
+        </p>
+      </section>
+    </>
   );
 }
